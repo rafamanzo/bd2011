@@ -1,0 +1,22 @@
+%(a) Obtenha os nomes das pessoas que ministraram cursos que ja cursaram (possivelmente em oferecimentos diferentes).
+
+%  ministrantes := { M.idMinistrante, M.codigo  | oferecimentoCurso(M)  };
+%  alunos := {A.idAluno, A.codigo | cursandoCurso(A) };
+%  am := { A.idAluno, A.codigo | alunos(A) and (exists M) (ministrantes(M) and A.idAluno=M.idMinistrante and A.codigo=M.codigo) };
+%  itema := {P.nome | pessoa(P) and (exists AM) (am(AM) and P.id = AM.idAluno) };
+
+%(b) Obtenha os nomes das pessoas que cursaram todos os cursos que ja ministraram.
+%  ministrantes := { M.idMinistrante, M.codigo  | oferecimentoCurso(M)  };
+%  alunos := {A.idAluno, A.codigo | cursandoCurso(A) };
+%  naocursoumasministra := {M.idMinistrante | ministrantes(M) and not (exists A) ( alunos(A) and A.idAluno = M.idMinistrante and A.codigo = M.codigo) };
+%  itemb := {P.nome | pessoa(P) and not (exists M) ( naocursoumasministra(M) and P.id = M.idMinistrante) };
+
+%(c) Obtenha os cursos que so foram oferecidos uma unica vez
+%  maisdeumavez := {C1.codigo | oferecimentoCurso(C1) and (exists C2) (oferecimentoCurso(C2) and (C1.semestre <> C2.semestre or C1.ano <> C2.ano) and C1.codigo=C2.codigo)};
+%  itemc := {C.codigo | oferecimentoCurso(C) and not (exists C1) (maisdeumavez(C1) and C.codigo=C1.codigo) };
+
+%(d) Obtenha os cursos que foram oferecidos mais de uma vez, mas apenas por uma unica pessoa em todos os oferecimentos.
+%  itemd := {C1.codigo | oferecimentoCurso(C1) and (exists C2) (oferecimentoCurso(C2) and (C1.semestre <> C2.semestre or C1.ano <> C2.ano) and C1.codigo=C2.codigo and C1.idMinistrante=C2.idMinistrante)};
+
+%(e) Obtenha o nome, codigo do curso, ano e semestre de oferecimento de uma pessoa que ministrou e cursou simultaneamente o mesmo curso (indicío de erro).
+%  iteme := {P.nome, C.codigo, C.semestre, C.ano | pessoa(P) and oferecimentoCurso(C) and C.idMinistrante=P.id and (exists C1) ( cursandoCurso(C1) and C1.codigo=C.codigo and C1.semestre=C.semestre and C1.ano=C.ano and C.idMinistrante=C1.idAluno) };
