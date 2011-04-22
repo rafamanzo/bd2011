@@ -1,3 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MAC 426 - Bancos de dados                            %%
+%% IME-USP - Primeiro Semestre de 2011                  %%
+%% Consultas na linguagem Calculo Relacional de Dominio %%
+%%                                                      %%
+%% Primeiro Exercício-Programa                          %%
+%%                                                      %%   
+%% Rafael Reggiani Manzo 6797150                        %%
+%%                                                      %%
+%% 25/04/2011                                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %(a) Obtenha os nomes das pessoas que ministraram cursos que ja cursaram (possivelmente em oferecimentos diferentes).
 
 %  ministrantes := { ID, CODIGO | oferecimentoCurso(CODIGO, _, _, ID)  };
@@ -12,14 +24,14 @@
 %  itemb := {NOM | (exists ID) (pessoa(ID, NOM) and not naocursoumasministra(ID)) };
 
 %(c) Obtenha os cursos que so foram oferecidos uma unica vez
-  maisdeumavez := {COD | (exists ANO, SEM, ANO1, SEM1) (oferecimentoCurso(COD, ANO, SEM, _) and oferecimentoCurso(COD, ANO1, SEM1, _) and (SEM <> SEM1 or ANO <> ANO1) )};
-  itemc := {COD | oferecimentoCurso(COD, _, _, _) and not maisdeumavez(COD) };
+%  maisdeumavez := {COD | (exists ANO, SEM, ANO1, SEM1, MIN, MIN1) (oferecimentoCurso(COD, ANO, SEM, MIN) and oferecimentoCurso(COD, ANO1, SEM1, MIN1) and (SEM <> SEM1 or ANO <> ANO1 or MIN <> MIN1) )};
+%  itemc := {COD | oferecimentoCurso(COD, _, _, _) and not maisdeumavez(COD) };
 
 %(d) Obtenha os cursos que foram oferecidos mais de uma vez, mas apenas por uma unica pessoa em todos os oferecimentos.
 %  itemd := {COD | (exists ANO, SEM, ANO1, SEM1, MIN) (oferecimentoCurso(COD, ANO, SEM, MIN) and oferecimentoCurso(COD, ANO1, SEM1, MIN) and (SEM <> SEM1 or ANO <> ANO1) )};
 
 %(e) Obtenha o nome, codigo do curso, ano e semestre de oferecimento de uma pessoa que ministrou e cursou simultaneamente o mesmo curso (indicío de erro).
-  iteme := {NOM, COD, ANO, SEM | (exists ID) (pessoa(ID, NOM) and oferecimentoCurso(COD, ANO, SEM, ID) and cursandoCurso(COD, ANO, SEM, ID, _)) };
+%  iteme := {NOM, COD, ANO, SEM | (exists ID) (pessoa(ID, NOM) and oferecimentoCurso(COD, ANO, SEM, ID) and cursandoCurso(COD, ANO, SEM, ID, _)) };
 
 
 

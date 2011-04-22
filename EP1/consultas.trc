@@ -1,3 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MAC 426 - Bancos de dados                           %%
+%% IME-USP - Primeiro Semestre de 2011                 %%
+%% Consultas na linguagem Calculo Relacional de Tuplas %%
+%%                                                     %%
+%% Primeiro Exercício-Programa                         %%
+%%                                                     %%   
+%% Rafael Reggiani Manzo 6797150                       %%
+%%                                                     %%
+%% 25/04/2011                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %(a) Obtenha os nomes das pessoas que ministraram cursos que ja cursaram (possivelmente em oferecimentos diferentes).
 
 %  ministrantes := { M.idMinistrante, M.codigo  | oferecimentoCurso(M)  };
@@ -12,7 +24,7 @@
 %  itemb := {P.nome | pessoa(P) and not (exists M) ( naocursoumasministra(M) and P.id = M.idMinistrante) };
 
 %(c) Obtenha os cursos que so foram oferecidos uma unica vez
-%  maisdeumavez := {C1.codigo | oferecimentoCurso(C1) and (exists C2) (oferecimentoCurso(C2) and (C1.semestre <> C2.semestre or C1.ano <> C2.ano) and C1.codigo=C2.codigo)};
+%  maisdeumavez := {C1.codigo | oferecimentoCurso(C1) and (exists C2) (oferecimentoCurso(C2) and (C1.semestre <> C2.semestre or C1.ano <> C2.ano or C1.idMinistrante<>C2.idMinistrante) and C1.codigo=C2.codigo)};
 %  itemc := {C.codigo | oferecimentoCurso(C) and not (exists C1) (maisdeumavez(C1) and C.codigo=C1.codigo) };
 
 %(d) Obtenha os cursos que foram oferecidos mais de uma vez, mas apenas por uma unica pessoa em todos os oferecimentos.

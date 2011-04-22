@@ -7,6 +7,7 @@
 'animais0123','2010','1','1'
 'animais0456','2012','1','1'
 'animais0456','2013','1','1'
+'animais0789','2013','1','1'
 
 @cursandoCurso(codigo/char,ano/char,semestre/char,idAluno/char,nota/numeric):codigo, ano, semestre, id - aluno
 'animais0123','2010','1','2',10
